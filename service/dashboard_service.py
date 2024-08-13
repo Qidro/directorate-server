@@ -56,8 +56,8 @@ def get_advanced_dashboard(user, start_date: datetime.date, end_date: datetime.d
     }
 
     for status in ['INITIATION', 'PREPARATION', 'REALIZATION','COMPLETION', 'POST_PROJECT_MONITORING', 'ARCHIVED','CANCELED']:
-        project_count_by_status = len(Project.select().where((Project.status == status))
-                                     .group_by(Project.backpack))
+        project_count_by_status = len(Project.select().where((Project.status == status)))
+                                     #.group_by(Project.backpack))
 
         project_count_list_by_status[status.lower()] += project_count_by_status
     """
