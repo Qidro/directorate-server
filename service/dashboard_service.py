@@ -36,7 +36,7 @@ def get_advanced_dashboard(user, start_date: datetime.date, end_date: datetime.d
         'reject': 0,
         'archived': 0,
     }
-
+    
     for status in ['SUCCESS', 'REJECT', 'ARCHIVED']:
         proposal_count_by_status = len(ProposalVerdicts.select().where((ProposalVerdicts.status == status)
                                                                      & (ProposalVerdicts.date >= start_date)
@@ -55,6 +55,12 @@ def get_advanced_dashboard(user, start_date: datetime.date, end_date: datetime.d
         'canceled': 0,
     }
 
+    for status in ['INITIATION', 'PREPARATION', 'REALIZATION','COMPLETION', 'POST_PROJECT_MONITORING', 'ARCHIVED','CANCELED']:
+        project_count_by_status = len(Project.select().where((Project.status == status))
+                                     .group_by(Project.backpack))
+
+        project_count_list_by_status[status.lower()] += project_count_by_status
+    """
     for project in projects:
         logs = ProjectLog.fetch(
             condition=((ProjectLog.project == project.id)
@@ -72,6 +78,7 @@ def get_advanced_dashboard(user, start_date: datetime.date, end_date: datetime.d
             project_count_list_by_status[log['new_status'].lower()] += 1
         except:
             pass
+        """
 
     return {
         'project_count': project_count,
