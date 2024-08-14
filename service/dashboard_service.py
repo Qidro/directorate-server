@@ -46,8 +46,8 @@ def get_advanced_dashboard(user, start_date: datetime.date, end_date: datetime.d
 
         proposal_count_list_by_status[status.lower()] += proposal_count_by_status
 
-    proposal_count_list_by_status['development'] = proposal_count - proposal_count_list_by_status['success'] - proposal_count_list_by_status['reject']
-    - proposal_count_list_by_status['archived']
+    proposal_count_list_by_status['development'] = proposal_count - proposal_count_list_by_status['success'] - proposal_count_list_by_status['reject'] - proposal_count_list_by_status['archived']
+
 
     project_count_list_by_status = {
         'initiation': 0,
