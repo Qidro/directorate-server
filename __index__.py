@@ -62,4 +62,5 @@ if __name__ == '__main__':
             ProjectResultsLog, ProjectCalendarPlanLog, ProjectContractsLog
         ])
 
-    app.run(debug=os.environ.get('DEBUG') or False, port=os.environ.get('PORT'), ssl_context=('cert.pem', 'key.pem'))
+    app.run(debug=os.environ.get('DEBUG') or False, port=os.environ.get('PORT'))
+    #app.run(debug=os.environ.get('DEBUG') or False, port=os.environ.get('PORT'), ssl_context=('cert.pem', 'key.pem'))
