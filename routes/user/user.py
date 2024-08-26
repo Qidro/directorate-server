@@ -20,6 +20,7 @@ def register(user):
 @user_router.post('/registration/NewRegistration')
 def register_new() -> jsonify:
     print("я в функции регистрации")
+    print("Данные запроса:", request.json)
     data = flaskparser.parser.parse(register_model, request)
     print("в функции:", data)
     user_data = user_service.registration(data['login'], data['firstname'], data['lastname'], data['surname'], data['password'], data['phone'], data['email'], data['position_id'])
