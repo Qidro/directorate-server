@@ -18,7 +18,7 @@ def register(user):
     return jsonify(user_data)
 
 @user_router.post('/registration/NewRegistration')
-def register_new():
+def register_new() -> jsonify:
     print("я в функции регистрации")
     data = flaskparser.parser.parse(register_model, request)
     print(data)
