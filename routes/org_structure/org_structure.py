@@ -10,7 +10,6 @@ org_structure_router = Blueprint('org_structure', __name__)
 
 
 @org_structure_router.get('/org_structure/departments')
-@login_required
 def get_departments(user):
     departments = org_structer_services.get_departments()
     return jsonify(departments)
