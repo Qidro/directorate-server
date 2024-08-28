@@ -56,6 +56,7 @@ def change_password(user):
 
 @user_router.post('/user/login')
 def login():
+    print("Данные запроса:", request.json)
     data = flaskparser.parser.parse(login_model, request)
     user, session = user_service.login(data['login'], data['password'])
 
