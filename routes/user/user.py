@@ -58,9 +58,11 @@ def change_password(user):
 def login():
     print("Данные запроса:", request.json)
     data = flaskparser.parser.parse(login_model, request)
+    print("Данные data:", data)
     user, session = user_service.login(data['login'], data['password'])
-
+    print("Данные session:", session)
     res = make_response(jsonify(user))
+    print("Данные res:", res)
     res.set_cookie('session', session, httponly=True)
     return res
 
